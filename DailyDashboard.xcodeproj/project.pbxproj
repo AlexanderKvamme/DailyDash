@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,7 @@
 		DD0E0B822529E369009C83F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD0E0B802529E369009C83F3 /* Main.storyboard */; };
 		DD0E0B8B252A0924009C83F3 /* AKColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0E0B8A252A0924009C83F3 /* AKColors.swift */; };
 		DD0E0B8D252A11F3009C83F3 /* GlamourAbsolute_Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = DD0E0B8C252A11F3009C83F3 /* GlamourAbsolute_Regular.otf */; };
+		DD0E0B91252A1A2A009C83F3 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = DD0E0B90252A1A2A009C83F3 /* Charts */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD0E0B91252A1A2A009C83F3 /* Charts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,6 +106,9 @@
 			dependencies = (
 			);
 			name = DailyDashboard;
+			packageProductDependencies = (
+				DD0E0B90252A1A2A009C83F3 /* Charts */,
+			);
 			productName = DailyDashboard;
 			productReference = DD0E0B742529E367009C83F3 /* DailyDashboard.app */;
 			productType = "com.apple.product-type.application";
@@ -132,6 +137,9 @@
 				Base,
 			);
 			mainGroup = DD0E0B6B2529E367009C83F3;
+			packageReferences = (
+				DD0E0B8F252A1A2A009C83F3 /* XCRemoteSwiftPackageReference "swiftui-charts" */,
+			);
 			productRefGroup = DD0E0B752529E367009C83F3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -361,6 +369,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DD0E0B8F252A1A2A009C83F3 /* XCRemoteSwiftPackageReference "swiftui-charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/swift-extensions/swiftui-charts";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DD0E0B90252A1A2A009C83F3 /* Charts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD0E0B8F252A1A2A009C83F3 /* XCRemoteSwiftPackageReference "swiftui-charts" */;
+			productName = Charts;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DD0E0B6C2529E367009C83F3 /* Project object */;
 }
