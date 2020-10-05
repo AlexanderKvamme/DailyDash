@@ -10,6 +10,8 @@ import SwiftUI
 import Charts
 
 let akWhite = Color(NSColor(red: 0.953, green: 0.949, blue: 0.941, alpha: 1.0))
+let akBeige = Color(NSColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1.0))
+let akBrown = Color(NSColor(red: 0.596, green: 0.58, blue: 0.584, alpha: 1.0))
 let akWhiter = Color(NSColor(red: 0.996, green: 0.996, blue: 0.996, alpha: 1.0))
 let akBlack = Color(NSColor(red: 0.184, green: 0.181, blue: 0.172, alpha: 1.0))
 
@@ -101,44 +103,56 @@ struct ContentView: View {
             }
             
             
-            HStack{
+            // 'Other' section
+            HStack(alignment: VerticalAlignment.top, spacing: 20) {
                 VStack {
-                    Text("Graph")
-                        .foregroundColor(akBlack)
-                        .font(.custom(glamour, size: 32))
-                        .padding()
+                    VStack {
+                        Text("Graph")
+                            .foregroundColor(akBlack)
+                            .font(.custom(glamour, size: 32))
+                            .padding()
+                        
+                        Chart(data: [0, 0.3, 0.2, 0.5, 0.4, 0.9, 0])
+                            .chartStyle(
+                                LineChartStyle(.quadCurve, lineColor: akBlack, lineWidth: 5)
+                        )
+                            .padding()
+                    }
+                    .frame(width: 400, height: 200, alignment: .center)
+                    .background(akWhiter)
+                    .cornerRadius(16)
                     
-                    Chart(data: [0, 0.3, 0.2, 0.5, 0.4, 0.9, 0])
-                        .chartStyle(
-                            LineChartStyle(.quadCurve, lineColor: akBlack, lineWidth: 5)
-                    )
-                        .padding()
+                    VStack {
+                        Text("Daily highlight")
+                            .foregroundColor(akBlack)
+                            .font(.custom(glamour, size: 32))
+                            .padding()
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 20)
+                            .foregroundColor(akBeige)
+                            .padding()
+                        Text("SET A HIGHLIGHT")
+                            .multilineTextAlignment(.center)
+                            .foregroundColor(akBlack)
+                            .font(.custom("Futura-Medium", size: 18))
+                            .foregroundColor(akBrown)
+                            .opacity(0.4)
+                            
+                        
+                        }
+                    }
+                    .frame(width: 400, height: 200, alignment: .center)
+                    .background(akWhiter)
+                    .cornerRadius(16)
                 }
-                .frame(width: 400, height: 200, alignment: .center)
-                .background(akWhiter)
-                .cornerRadius(16)
-                
                 VStack {
-                    Text("Graph")
-                        .foregroundColor(akBlack)
-                        .font(.custom(glamour, size: 32))
-                        .padding()
-                    
-                    Chart(data: [0, 0.3, 0.2, 0.5, 0.4, 0.9, 0])
-                        .chartStyle(
-                            LineChartStyle(.quadCurve, lineColor: akBlack, lineWidth: 5)
-                    )
-                        .padding()
-                }
-                .frame(width: 400, height: 200, alignment: .center)
-                .background(akWhiter)
-                .cornerRadius(16)
-                
+                // Todays clothing
                 VStack {
                     Text("Todays clothing")
                         .foregroundColor(akBlack)
                         .font(.custom(glamour, size: 32))
                         .padding()
+                    
                     VStack() {
                         HStack {
                             Image("sunny")
@@ -152,7 +166,6 @@ struct ContentView: View {
                                 .foregroundColor(akBlack)
                             }
                         }
-                        //Spacer()
                         HStack {
                             Image("sunny")
                             .resizable()
@@ -177,19 +190,70 @@ struct ContentView: View {
                                 .foregroundColor(akBlack)
                             }
                         }
-                    
                     }.padding()
                 }
                 .frame(width: 280, height: .none, alignment: .center)
                 .background(akWhiter)
                 .cornerRadius(16)
                 
+                VStack {
+                    Text("TODO")
+                        .foregroundColor(akBlack)
+                        .font(.custom(glamour, size: 32))
+                        .padding()
+                    
+                    VStack() {
+                        HStack {
+                            Image("sunny")
+                                .resizable()
+                                .frame(width: 48, height: 48, alignment: .center)
+                            VStack(alignment: .leading) {
+                                Text("Umbrella")
+                                .foregroundColor(akBlack)
+                                .font(.custom(glamour, size: 14))
+                                Text("Rain over 3mm")
+                                .foregroundColor(akBlack)
+                            }
+                        }
+                        HStack {
+                            Image("sunny")
+                            .resizable()
+                            .frame(width: 48, height: 48, alignment: .center)
+                            VStack(alignment: .leading) {
+                                Text("Umbrella")
+                                .foregroundColor(akBlack)
+                                .font(.custom(glamour, size: 14))
+                                Text("Rain over 3mm")
+                                .foregroundColor(akBlack)
+                            }
+                        }
+                        HStack {
+                            Image("sunny")
+                            .resizable()
+                            .frame(width: 48, height: 48, alignment: .center)
+                            VStack(alignment: .leading) {
+                                Text("Umbrella")
+                                .foregroundColor(akBlack)
+                                .font(.custom(glamour, size: 14))
+                                Text("Rain over 3mm")
+                                .foregroundColor(akBlack)
+                            }
+                        }
+                    }.padding()
+                }
+                .frame(width: 280, height: .none, alignment: .center)
+                .background(akWhiter)
+                .cornerRadius(16)
+            } // other
+            .padding()
             }
-        .padding()
+            
+            
+            
         }
         .background(akWhite)
         .padding()
-        .frame(width: 1000, height: 700, alignment: .center)
+        .frame(width: 1000, height: 850, alignment: .center)
         .onAppear(perform: {
             for font in NSFontManager.shared.availableFonts {
                 print(font)
@@ -210,3 +274,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
