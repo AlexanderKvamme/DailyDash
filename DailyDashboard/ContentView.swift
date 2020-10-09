@@ -17,8 +17,6 @@ let akBlack = Color(NSColor(red: 0.184, green: 0.181, blue: 0.172, alpha: 1.0))
 
 let glamour = "GlamourAbsolute-regular"
 
-
-
 struct ContentView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
@@ -39,15 +37,13 @@ struct ContentView: View {
                 .foregroundColor(akBlack)
                 .font(.custom("Futura-Bold", size: 8))
                 .opacity(0.2)
-            
-            Divider()
-
             Text("")
             .frame(height: 30)
             Text("The daily dash")
                 .foregroundColor(akBlack)
                 .font(.custom(glamour, size: 48))
-            Spacer()
+            Text("")
+            .frame(height: 32)
             HStack(spacing: 20) {
                 VStack {
                     Image("sunny")
@@ -63,7 +59,6 @@ struct ContentView: View {
                 .frame(width: 200, height: 100, alignment: .center)
                 .background(akWhiter)
                 .cornerRadius(16)
-                
                 
                 VStack {
                     Text("22°C")
@@ -88,6 +83,7 @@ struct ContentView: View {
                 .background(akWhiter)
                 .cornerRadius(16)
                 
+                // Accuract
                 VStack {
                     Text("Accuracy")
                         .foregroundColor(akBlack)
@@ -101,7 +97,6 @@ struct ContentView: View {
                 .background(akWhiter)
                 .cornerRadius(16)
             }
-            
             
             // 'Other' section
             HStack(alignment: VerticalAlignment.top, spacing: 20) {
@@ -195,76 +190,48 @@ struct ContentView: View {
                 .frame(width: 280, height: .none, alignment: .center)
                 .background(akWhiter)
                 .cornerRadius(16)
-                
-                VStack {
-                    Text("TODO")
-                        .foregroundColor(akBlack)
-                        .font(.custom(glamour, size: 32))
-                        .padding()
-                    
-                    VStack() {
-                        HStack {
-                            Image("sunny")
-                                .resizable()
-                                .frame(width: 48, height: 48, alignment: .center)
-                            VStack(alignment: .leading) {
-                                Text("Umbrella")
-                                .foregroundColor(akBlack)
-                                .font(.custom(glamour, size: 14))
-                                Text("Rain over 3mm")
-                                .foregroundColor(akBlack)
-                            }
-                        }
-                        HStack {
-                            Image("sunny")
-                            .resizable()
-                            .frame(width: 48, height: 48, alignment: .center)
-                            VStack(alignment: .leading) {
-                                Text("Umbrella")
-                                .foregroundColor(akBlack)
-                                .font(.custom(glamour, size: 14))
-                                Text("Rain over 3mm")
-                                .foregroundColor(akBlack)
-                            }
-                        }
-                        HStack {
-                            Image("sunny")
-                            .resizable()
-                            .frame(width: 48, height: 48, alignment: .center)
-                            VStack(alignment: .leading) {
-                                Text("Umbrella")
-                                .foregroundColor(akBlack)
-                                .font(.custom(glamour, size: 14))
-                                Text("Rain over 3mm")
-                                .foregroundColor(akBlack)
-                            }
-                        }
-                    }.padding()
                 }
                 .frame(width: 280, height: .none, alignment: .center)
                 .background(akWhiter)
                 .cornerRadius(16)
             } // other
             .padding()
+        
+            HStack {
+                Spacer()
+                VStack(alignment: .trailing) {
+                    Text("With love from".uppercased())
+                        .foregroundColor(akBlack)
+                        .font(.custom("Futura-Medium", size: 24))
+                        .fontWeight(.bold)
+                        .opacity(0.4)
+                        .multilineTextAlignment(.trailing)
+                    Text("Home Offices International".uppercased())
+                        .foregroundColor(akBlack)
+                        
+                        .font(.custom("Futura-Medium", size: 24))
+                        .fontWeight(.bold)
+                        .multilineTextAlignment(.trailing)
+                    
+                }
+            .padding(24)
+                Image("chat-icon")
+                         .resizable()
+                    .renderingMode(.template)
+                    .foregroundColor(akBrown)
+                    .opacity(0.2)
+                         .frame(width: 48, height: 48, alignment: .center)
+                    .padding(EdgeInsets(top: 0,leading: 0,bottom: 0,trailing: 48))
+                    
             }
-            
-            
-            
+            .opacity(0.6)
         }
         .background(akWhite)
-        .padding()
-        .frame(width: 1000, height: 850, alignment: .center)
         .onAppear(perform: {
             for font in NSFontManager.shared.availableFonts {
                 print(font)
             }
         })
-        
-        
-        
-        
-        
-        
     }
 }
 
