@@ -16,6 +16,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     var window: NSWindow!
     let locationService = LocationService.shared
+    let networkService = NetworkService()
+    var weatherService: WeatherService?
 
     // MARK: Delegate methods
 
@@ -36,6 +38,32 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Request location
         locationService.setDelegate(self)
         locationService.start()
+        
+        weatherService = WeatherService(networkService)
+        
+        // Test data
+        
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        let data = Data(YrCompactResponse.dummy.utf8)
+        do {
+            let decoded = try decoder.decode(YrCompactResponse.self, from: data)
+            
+            // TODO: Handle successfull decoding
+        } catch DecodingError.dataCorrupted(let context) {
+            print(context)
+        } catch DecodingError.keyNotFound(let key, let context) {
+            print("Key '\(key)' not found:", context.debugDescription)
+            print("codingPath a:", context.codingPath)
+        } catch DecodingError.valueNotFound(let value, let context) {
+            print("Value '\(value)' not found:", context.debugDescription)
+            print("codingPath b:", context.codingPath)
+        } catch DecodingError.typeMismatch(let type, let context) {
+            print("Type '\(type)' mismatch:", context.debugDescription)
+            print("codingPath c:", context.codingPath)
+        } catch {
+            print("error: \(error) - \(error.localizedDescription)")
+        }
     }
 }
 
