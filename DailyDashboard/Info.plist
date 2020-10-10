@@ -36,5 +36,7 @@
 	<array>
 		<string>GlamourAbsolute_Regular.otf</string>
 	</array>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>&quot;So you dont have to manually enter your location&quot;</string>
 </dict>
 </plist>

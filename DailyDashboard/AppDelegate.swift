@@ -12,8 +12,12 @@ import SwiftUI
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
+    // MARK: Properties
+    
     var window: NSWindow!
+    let locationService = LocationService.shared
 
+    // MARK: Delegate methods
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Create the SwiftUI view that provides the window contents.
@@ -28,10 +32,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.setFrameAutosaveName("Main Window")
         window.contentView = NSHostingView(rootView: contentView)
         window.makeKeyAndOrderFront(nil)
-    }
-
-    func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
+        
+        // Request location
+        locationService.setDelegate(self)
+        locationService.start()
     }
 }
 
+// MARK: Delegate methods for LocationService
+
+extension AppDelegate: LocationServiceDelegate {
+    func updateLocation(to location: CLLocation) {
+        UserDefaults.standard.setValue(location.coordinate.latitude, forKeyPath: "latitude")
+        UserDefaults.standard.setValue(location.coordinate.longitude, forKeyPath: "longitude")
+    }
+}
