@@ -78,6 +78,19 @@ final class LocationService: NSObject, CLLocationManagerDelegate {
         }
     }
     
+    func getUserLocation() -> CLLocation {
+        let ud = UserDefaults.standard
+        guard ud.value(forKey: "latitude") != nil && ud.value(forKey: "longitude") != nil  else {
+            let latitudeOslo = 59.91273
+            let longitudeOslo = 10.74609
+            ud.setValue(latitudeOslo, forKeyPath: "latitude")
+            ud.setValue(longitudeOslo, forKeyPath: "longitude")
+            return CLLocation(latitude: latitudeOslo, longitude: longitudeOslo)
+        }
+        
+        return CLLocation(latitude: ud.double(forKey: "latitude"), longitude: ud.double(forKey: "longitude"))
+    }
+    
     // TODO: Implement ccompletionhandler
     func alertUserForLocation() {
         let alert = NSAlert()

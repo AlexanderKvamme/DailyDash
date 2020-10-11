@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DD0A9ED12530F907003C3870 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0A9ED02530F907003C3870 /* NetworkManager.swift */; };
+		DD0A9ED12530F907003C3870 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0A9ED02530F907003C3870 /* NetworkService.swift */; };
 		DD0E0B782529E367009C83F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0E0B772529E367009C83F3 /* AppDelegate.swift */; };
-		DD0E0B7A2529E367009C83F3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0E0B792529E367009C83F3 /* ContentView.swift */; };
+		DD0E0B7A2529E367009C83F3 /* MainScreenContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0E0B792529E367009C83F3 /* MainScreenContentView.swift */; };
 		DD0E0B7C2529E369009C83F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD0E0B7B2529E369009C83F3 /* Assets.xcassets */; };
 		DD0E0B7F2529E369009C83F3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD0E0B7E2529E369009C83F3 /* Preview Assets.xcassets */; };
 		DD0E0B822529E369009C83F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD0E0B802529E369009C83F3 /* Main.storyboard */; };
@@ -22,10 +22,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		DD0A9ED02530F907003C3870 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		DD0A9ED02530F907003C3870 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		DD0E0B742529E367009C83F3 /* DailyDashboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyDashboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD0E0B772529E367009C83F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DD0E0B792529E367009C83F3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = DailyDashboard/ContentView.swift; sourceTree = SOURCE_ROOT; };
+		DD0E0B792529E367009C83F3 /* MainScreenContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainScreenContentView.swift; path = DailyDashboard/MainScreenContentView.swift; sourceTree = SOURCE_ROOT; };
 		DD0E0B7B2529E369009C83F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DD0E0B7E2529E369009C83F3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DD0E0B812529E369009C83F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -71,9 +71,9 @@
 			children = (
 				DD0E0B772529E367009C83F3 /* AppDelegate.swift */,
 				DD64A1472531CFE900E80058 /* WeatherService.swift */,
-				DD0E0B792529E367009C83F3 /* ContentView.swift */,
+				DD0E0B792529E367009C83F3 /* MainScreenContentView.swift */,
 				DD6E493C252D8CC70072CAE7 /* TestView.swift */,
-				DD0A9ED02530F907003C3870 /* NetworkManager.swift */,
+				DD0A9ED02530F907003C3870 /* NetworkService.swift */,
 				DD64A14A2531D94B00E80058 /* WeatherHour.swift */,
 				DD68379125317F10004EE805 /* LocationService.swift */,
 				DD0E0B7B2529E369009C83F3 /* Assets.xcassets */,
@@ -180,10 +180,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD0A9ED12530F907003C3870 /* NetworkManager.swift in Sources */,
+				DD0A9ED12530F907003C3870 /* NetworkService.swift in Sources */,
 				DDDBAFED252D987600332685 /* TestView.swift in Sources */,
 				DD68379225317F10004EE805 /* LocationService.swift in Sources */,
-				DD0E0B7A2529E367009C83F3 /* ContentView.swift in Sources */,
+				DD0E0B7A2529E367009C83F3 /* MainScreenContentView.swift in Sources */,
 				DD64A1482531CFE900E80058 /* WeatherService.swift in Sources */,
 				DD64A14B2531D94B00E80058 /* WeatherHour.swift in Sources */,
 				DD0E0B782529E367009C83F3 /* AppDelegate.swift in Sources */,

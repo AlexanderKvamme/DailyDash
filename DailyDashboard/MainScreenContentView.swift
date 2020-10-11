@@ -16,26 +16,35 @@ let akWhiter = Color(NSColor(red: 0.996, green: 0.996, blue: 0.996, alpha: 1.0))
 let akBlack = Color(NSColor(red: 0.184, green: 0.181, blue: 0.172, alpha: 1.0))
 
 let glamour = "GlamourAbsolute-regular"
+let futuraBold = "Futura-Bold"
+let futuraMedium = "Futura-Medium"
 
-struct ContentView: View {
+struct MainScreenContentView: View {
+
+    // MARK: Properties
+    
+    @State var currentWeather: YrCompactResponse
+    
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
             Text("")
             .frame(height: 30)
             Text("WELCOME,")
+                .kerning(1)
                 .frame(maxWidth: .infinity, alignment: .center)
                 .multilineTextAlignment(.center)
                 .foregroundColor(akBlack)
-                .font(.custom("Futura-Medium", size: 12))
+                .font(.custom(futuraBold, size: 16))
             Text("LORD FRESH")
+                .kerning(1)
                 .multilineTextAlignment(.center)
                 .foregroundColor(akBlack)
-                .font(.custom("Futura-Medium", size: 18))
+                .font(.custom(futuraBold, size: 20))
             Text("TO THE")
                 .frame(maxWidth: .infinity, alignment: .center)
                 .multilineTextAlignment(.center)
                 .foregroundColor(akBlack)
-                .font(.custom("Futura-Bold", size: 8))
+                .font(.custom(futuraBold, size: 12))
                 .opacity(0.2)
             Text("")
             .frame(height: 30)
@@ -46,12 +55,12 @@ struct ContentView: View {
             .frame(height: 32)
             HStack(spacing: 20) {
                 VStack {
-                    Image("sunny")
+                    Image("\(currentWeather.properties.timeseries.first!.data.next1Hours?.summary?.symbolCode ?? "???")")
                         .resizable()
                         .frame(width: 64, height: 64, alignment: .center)
                         .aspectRatio(contentMode: .fill)
                         .clipped()
-                    Text("Mostly sunny")
+                    Text("\(currentWeather.properties.timeseries.first!.data.next1Hours?.summary?.symbolCode ?? "???")")
                         .foregroundColor(akBlack)
                         .font(.custom(glamour, size: 24))
                     Spacer()
@@ -60,12 +69,14 @@ struct ContentView: View {
                 .background(akWhiter)
                 .cornerRadius(16)
                 
-                VStack {
-                    Text("22°C")
+                VStack {    
+                    let temperature = currentWeather.properties.timeseries.first?.data.instant.details.airTemperature ?? -999
+                    Text("\(temperature, specifier: "%.1f")")
                         .foregroundColor(akBlack)
                         .font(.custom(glamour, size: 48))
                         .fontWeight(.bold)
                     Text("Celcius")
+                        .font(.custom(futuraMedium, size: 12))
                         .foregroundColor(akBlack)
                 }
                 .frame(width: 200, height: 100, alignment: .center)
@@ -73,29 +84,32 @@ struct ContentView: View {
                 .cornerRadius(16)
                 
                 VStack {
-                    Text("3 m/s")
+                    let windSpeed = currentWeather.properties.timeseries.first?.data.instant.details.windSpeed ?? -999
+                    Text("\(windSpeed, specifier: "%.1f")")
                         .foregroundColor(akBlack)
                         .font(.custom(glamour, size: 48))
                     Text("Wind")
+                        .font(.custom(futuraMedium, size: 12))
                         .foregroundColor(akBlack)
                 }
                 .frame(width: 200, height: 100, alignment: .center)
                 .background(akWhiter)
                 .cornerRadius(16)
                 
-                // Accuract
+                // Accuracy
                 VStack {
-                    Text("Accuracy")
-                        .foregroundColor(akBlack)
-                        .font(.custom(glamour, size: 12))
-                        .fontWeight(.bold)
                     Text("100%")
+                        .opacity(0.4)
                         .foregroundColor(akBlack)
                         .font(.custom(glamour, size: 48))
+                    Text("Accuracy")
+                        .font(.custom(futuraMedium, size: 12))
+                        .foregroundColor(akBlack)
                 }
                 .frame(width: 200, height: 100, alignment: .center)
                 .background(akWhiter)
                 .cornerRadius(16)
+                .opacity(0.6)
             }
             
             // 'Other' section
@@ -129,11 +143,9 @@ struct ContentView: View {
                         Text("SET A HIGHLIGHT")
                             .multilineTextAlignment(.center)
                             .foregroundColor(akBlack)
-                            .font(.custom("Futura-Medium", size: 18))
-                            .foregroundColor(akBrown)
+                            .font(.custom(futuraBold, size: 18))
+                            .foregroundColor(akBlack)
                             .opacity(0.4)
-                            
-                        
                         }
                     }
                     .frame(width: 400, height: 200, alignment: .center)
@@ -156,7 +168,7 @@ struct ContentView: View {
                             VStack(alignment: .leading) {
                                 Text("Umbrella")
                                 .foregroundColor(akBlack)
-                                .font(.custom(glamour, size: 14))
+                                .font(.custom(futuraMedium, size: 14))
                                 Text("Rain over 3mm")
                                 .foregroundColor(akBlack)
                             }
@@ -168,7 +180,7 @@ struct ContentView: View {
                             VStack(alignment: .leading) {
                                 Text("Umbrella")
                                 .foregroundColor(akBlack)
-                                .font(.custom(glamour, size: 14))
+                                .font(.custom(futuraMedium, size: 14))
                                 Text("Rain over 3mm")
                                 .foregroundColor(akBlack)
                             }
@@ -180,7 +192,7 @@ struct ContentView: View {
                             VStack(alignment: .leading) {
                                 Text("Umbrella")
                                 .foregroundColor(akBlack)
-                                .font(.custom(glamour, size: 14))
+                                .font(.custom(futuraMedium, size: 14))
                                 Text("Rain over 3mm")
                                 .foregroundColor(akBlack)
                             }
@@ -228,9 +240,9 @@ struct ContentView: View {
         }
         .background(akWhite)
         .onAppear(perform: {
-            for font in NSFontManager.shared.availableFonts {
-                print(font)
-            }
+//            for font in NSFontManager.shared.availableFonts {
+//                print(font)
+//            }
         })
     }
 }
@@ -238,7 +250,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        MainScreenContentView(currentWeather: YrCompactResponse.dummyZero)
     }
 }
-
