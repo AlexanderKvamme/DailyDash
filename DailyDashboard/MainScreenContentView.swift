@@ -14,6 +14,7 @@ let akBeige = Color(NSColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1.0))
 let akBrown = Color(NSColor(red: 0.596, green: 0.58, blue: 0.584, alpha: 1.0))
 let akWhiter = Color(NSColor(red: 0.996, green: 0.996, blue: 0.996, alpha: 1.0))
 let akBlack = Color(NSColor(red: 0.184, green: 0.181, blue: 0.172, alpha: 1.0))
+let width: CGFloat = 160*2+100
 
 let glamour = "GlamourAbsolute-regular"
 let futuraBold = "Futura-Bold"
@@ -26,35 +27,40 @@ struct MainScreenContentView: View {
     @State var currentWeather: YrCompactResponse
     
     var body: some View {
+
         VStack(alignment: .center, spacing: 0) {
-            Text("")
-            .frame(height: 30)
-            Text("WELCOME,")
-                .kerning(1)
-                .frame(maxWidth: .infinity, alignment: .center)
-                .multilineTextAlignment(.center)
-                .foregroundColor(akBlack)
-                .font(.custom(futuraBold, size: 16))
-            Text("LORD FRESH")
-                .kerning(1)
-                .multilineTextAlignment(.center)
-                .foregroundColor(akBlack)
-                .font(.custom(futuraBold, size: 20))
-            Text("TO THE")
-                .frame(maxWidth: .infinity, alignment: .center)
-                .multilineTextAlignment(.center)
-                .foregroundColor(akBlack)
-                .font(.custom(futuraBold, size: 12))
-                .opacity(0.2)
-            Text("")
-            .frame(height: 30)
-            Text("The daily dash")
-                .foregroundColor(akBlack)
-                .font(.custom(glamour, size: 48))
-            Text("")
-            .frame(height: 32)
+            Spacer()
+            VStack(alignment: .center, spacing: 0, content: {
+                Text("WELCOME,")
+                    .kerning(1)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(akBlack)
+                    .font(.custom(futuraBold, size: 16))
+                Text("LORD FRESH")
+                    .kerning(1)
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(akBlack)
+                    .font(.custom(futuraBold, size: 20))
+                Text("TO THE")
+                    .padding(EdgeInsets(top: 8, leading: 0, bottom: 0, trailing: 0))
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(akBlack)
+                    .font(.custom(futuraBold, size: 12))
+                    .opacity(0.2)
+                Text("")
+                .frame(height: 30)
+                Text("The daily dash")
+                    .foregroundColor(akBlack)
+                    .font(.custom(glamour, size: 48))
+                Text("")
+                .frame(height: 32)
+            })
+            
             HStack(spacing: 20) {
                 VStack {
+                    Spacer()
                     Image("\(currentWeather.properties.timeseries.first!.data.next1Hours?.summary?.symbolCode ?? "???")")
                         .resizable()
                         .frame(width: 64, height: 64, alignment: .center)
@@ -65,11 +71,12 @@ struct MainScreenContentView: View {
                         .font(.custom(glamour, size: 24))
                     Spacer()
                 }
-                .frame(width: 200, height: 100, alignment: .center)
+                .frame(width: 200, height: 160, alignment: .center)
                 .background(akWhiter)
                 .cornerRadius(16)
                 
-                VStack {    
+                VStack {
+                    Spacer()
                     let temperature = currentWeather.properties.timeseries.first?.data.instant.details.airTemperature ?? -999
                     Text("\(temperature, specifier: "%.1f")")
                         .foregroundColor(akBlack)
@@ -78,12 +85,14 @@ struct MainScreenContentView: View {
                     Text("Celcius")
                         .font(.custom(futuraMedium, size: 12))
                         .foregroundColor(akBlack)
+                    Spacer()
                 }
-                .frame(width: 200, height: 100, alignment: .center)
+                .frame(width: 200, height: 160, alignment: .center)
                 .background(akWhiter)
                 .cornerRadius(16)
                 
                 VStack {
+                    Spacer()
                     let windSpeed = currentWeather.properties.timeseries.first?.data.instant.details.windSpeed ?? -999
                     Text("\(windSpeed, specifier: "%.1f")")
                         .foregroundColor(akBlack)
@@ -91,13 +100,15 @@ struct MainScreenContentView: View {
                     Text("Wind")
                         .font(.custom(futuraMedium, size: 12))
                         .foregroundColor(akBlack)
+                    Spacer()
                 }
-                .frame(width: 200, height: 100, alignment: .center)
+                .frame(width: 200, height: 160, alignment: .center)
                 .background(akWhiter)
                 .cornerRadius(16)
                 
                 // Accuracy
                 VStack {
+                    Spacer()
                     Text("100%")
                         .opacity(0.4)
                         .foregroundColor(akBlack)
@@ -105,13 +116,13 @@ struct MainScreenContentView: View {
                     Text("Accuracy")
                         .font(.custom(futuraMedium, size: 12))
                         .foregroundColor(akBlack)
+                    Spacer()
                 }
-                .frame(width: 200, height: 100, alignment: .center)
+                .frame(width: 200, height: 160, alignment: .center)
                 .background(akWhiter)
                 .cornerRadius(16)
                 .opacity(0.6)
             }
-            
             // 'Other' section
             HStack(alignment: VerticalAlignment.top, spacing: 20) {
                 VStack {
@@ -121,13 +132,13 @@ struct MainScreenContentView: View {
                             .font(.custom(glamour, size: 32))
                             .padding()
                         
-                        Chart(data: [0, 0.3, 0.2, 0.5, 0.4, 0.9, 0])
+                        Chart(data: [0, 0.3, 0.2, 0.5, 0.4, 0.9, 0]s)
                             .chartStyle(
                                 LineChartStyle(.quadCurve, lineColor: akBlack, lineWidth: 5)
                         )
-                            .padding()
+                        .padding()
                     }
-                    .frame(width: 400, height: 200, alignment: .center)
+                    .frame(width: width, height: 200, alignment: .center)
                     .background(akWhiter)
                     .cornerRadius(16)
                     
@@ -148,7 +159,7 @@ struct MainScreenContentView: View {
                             .opacity(0.4)
                         }
                     }
-                    .frame(width: 400, height: 200, alignment: .center)
+                    .frame(width: width, height: 200, alignment: .center)
                     .background(akWhiter)
                     .cornerRadius(16)
                 }
@@ -199,16 +210,15 @@ struct MainScreenContentView: View {
                         }
                     }.padding()
                 }
-                .frame(width: 280, height: .none, alignment: .center)
                 .background(akWhiter)
                 .cornerRadius(16)
                 }
-                .frame(width: 280, height: .none, alignment: .center)
+                .frame(width: width, height: .none, alignment: .center)
                 .background(akWhiter)
                 .cornerRadius(16)
             } // other
             .padding()
-        
+            Spacer()
             HStack {
                 Spacer()
                 VStack(alignment: .trailing) {
@@ -224,7 +234,6 @@ struct MainScreenContentView: View {
                         .font(.custom("Futura-Medium", size: 24))
                         .fontWeight(.bold)
                         .multilineTextAlignment(.trailing)
-                    
                 }
             .padding(24)
                 Image("chat-icon")
@@ -238,6 +247,7 @@ struct MainScreenContentView: View {
             }
             .opacity(0.6)
         }
+        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
         .background(akWhite)
         .onAppear(perform: {
 //            for font in NSFontManager.shared.availableFonts {
