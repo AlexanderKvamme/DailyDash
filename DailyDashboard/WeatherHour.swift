@@ -17,10 +17,6 @@ final class Rnd {
 
 struct Summary: Codable {
     var symbolCode: String?
-    
-//    enum CodingKeys: String, CodingKey {
-//        case symbolCode = "symbol_code"
-//    }
 }
 
 extension Summary {

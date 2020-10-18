@@ -68,7 +68,7 @@ struct MainScreenContentView: View {
                         .clipped()
                     Text("\(currentWeather.properties.timeseries.first!.data.next1Hours?.summary?.symbolCode ?? "???")")
                         .foregroundColor(akBlack)
-                        .font(.custom(glamour, size: 24))
+                        .font(.custom(glamour, size: 20))
                     Spacer()
                 }
                 .frame(width: 200, height: 160, alignment: .center)
@@ -127,12 +127,20 @@ struct MainScreenContentView: View {
             HStack(alignment: VerticalAlignment.top, spacing: 20) {
                 VStack {
                     VStack {
-                        Text("Graph")
+                        Text("Next 12 hours")
                             .foregroundColor(akBlack)
                             .font(.custom(glamour, size: 32))
                             .padding()
+//                        Chart(data: [0, 0.3, 0.2, 0.5, 0.4, 0.9, 0])
+//                            .chartStyle(
+//                                LineChartStyle(.quadCurve, lineColor: akBlack, lineWidth: 5)
+//                        )
+
+                        let temperatureArray = currentWeather.properties.timeseries.compactMap({ (ent) -> Double? in
+                            return ent.data.instant.details.airTemperature ?? nil
+                        })
                         
-                        Chart(data: [0, 0.3, 0.2, 0.5, 0.4, 0.9, 0]s)
+                        Chart(data: temperatureArray.map({ $0 / 10 })[0...12])
                             .chartStyle(
                                 LineChartStyle(.quadCurve, lineColor: akBlack, lineWidth: 5)
                         )
