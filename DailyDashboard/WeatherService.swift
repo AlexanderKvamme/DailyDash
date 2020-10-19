@@ -37,8 +37,6 @@ final class WeatherService: NSObject {
                 case .failure(let error):
                     completion(.failure(error))
                 case .success(let res):
-                    print(".success case for getCompactWeather")
-                    let str = try! String(decoding: result.get(), as: UTF8.self)
                     do {
                         let weather: YrCompactResponse = try self.decodeWeather(data: res)
                         completion(.success(weather))
