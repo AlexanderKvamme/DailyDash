@@ -44,6 +44,7 @@ final class LocationService: NSObject, CLLocationManagerDelegate {
     }
     
     func start() {
+        print("start")
         if locationManager.authorizationStatus != .authorized {
             alertUserForLocation()
         } else {
@@ -55,7 +56,6 @@ final class LocationService: NSObject, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
-            print("didUpdateLocations: \(location.coordinate.latitude), \(location.coordinate.longitude)")
             delegate?.updateLocation(to: location)
         }
     }
@@ -71,6 +71,7 @@ final class LocationService: NSObject, CLLocationManagerDelegate {
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        print("didChangeAuth to: ", manager.authorizationStatus)
         if manager.authorizationStatus == .authorized {
             start()
         } else {
@@ -97,7 +98,7 @@ final class LocationService: NSObject, CLLocationManagerDelegate {
         alert.messageText = "Need location to fetch weather"
         alert.informativeText = "Please accept"
         alert.alertStyle = NSAlert.Style.warning
-        let okButton = alert.addButton(withTitle: "aight")
+        let okButton = alert.addButton(withTitle: "Allow location")
         okButton.target = self
         okButton.action = #selector(requestAuthorization)
         alert.addButton(withTitle: "Cancel")

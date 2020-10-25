@@ -33,6 +33,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        
+//        let dv = DayView(day: "swag")
+//        setVC(dv)
+//        return
+            
         // Request location
         locationService.setDelegate(self)
         locationService.start()
@@ -57,6 +62,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 extension AppDelegate: LocationServiceDelegate {
     func updateLocation(to location: CLLocation) {
+        print("update location")
         UserDefaults.standard.setValue(location.coordinate.latitude, forKeyPath: "latitude")
         UserDefaults.standard.setValue(location.coordinate.longitude, forKeyPath: "longitude")
     }

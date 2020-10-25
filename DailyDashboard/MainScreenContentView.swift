@@ -27,7 +27,6 @@ struct MainScreenContentView: View {
     @State var currentWeather: YrCompactResponse
     
     var body: some View {
-
         VStack(alignment: .center, spacing: 0) {
             Spacer()
             VStack(alignment: .center, spacing: 0, content: {
@@ -58,6 +57,7 @@ struct MainScreenContentView: View {
                 .frame(height: 32)
             })
             
+            // Weather section
             HStack(spacing: 20) {
                 VStack {
                     Spacer()
@@ -123,6 +123,18 @@ struct MainScreenContentView: View {
                 .cornerRadius(16)
                 .opacity(0.6)
             }
+            
+            // Days
+            HStack(spacing: 20) {
+                DayView(day: "Monday")
+                DayView(day: "Tuesday")
+                DayView(day: "Wednesday")
+                DayView(day: "Thursday")
+                DayView(day: "Friday")
+                DayView(day: "Saturday")
+                DayView(day: "Sunday")
+            }.padding()
+            
             // 'Other' section
             HStack(alignment: VerticalAlignment.top, spacing: 20) {
                 VStack {
@@ -131,11 +143,6 @@ struct MainScreenContentView: View {
                             .foregroundColor(akBlack)
                             .font(.custom(glamour, size: 32))
                             .padding()
-//                        Chart(data: [0, 0.3, 0.2, 0.5, 0.4, 0.9, 0])
-//                            .chartStyle(
-//                                LineChartStyle(.quadCurve, lineColor: akBlack, lineWidth: 5)
-//                        )
-
                         let temperatureArray = currentWeather.properties.timeseries.compactMap({ (ent) -> Double? in
                             return ent.data.instant.details.airTemperature ?? nil
                         })
