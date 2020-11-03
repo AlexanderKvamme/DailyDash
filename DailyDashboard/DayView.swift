@@ -11,27 +11,24 @@ import AppKit
 import Introspect
 
 
-struct DailyHighlight: Identifiable {
-    var id = UUID()
-    var task = "Alexander"
-}
 
 struct DayView: View {
 
-    private var viewWidth: CGFloat = 240
-    private var day = ""
+    static let size = NSSize(width: 240, height: 300)
+    
+    private var day: Day
     @State var highLights = [DailyHighlight]()
     @State var text = ""
     @State var isFR = true
     @State var isInputtingHighlight = false
     
-    init(day: String) {
+    init(day: Day) {
         self.day = day
     }
     
     var body: some View {
         VStack {
-            Text(day)
+            Text(day.toString())
                 .multilineTextAlignment(.center)
                 .foregroundColor(akBlack)
                 .font(.custom(glamour, size: 32))
@@ -46,7 +43,7 @@ struct DayView: View {
                         .foregroundColor(akBlack)
                         .font(.custom(futuraBold, size: 16))
                 }
-                .frame(width: viewWidth-32, height: 40, alignment: .center)
+                .frame(width: DayView.size.width-32, height: 40, alignment: .center)
                 .padding(0)
             }
             .padding(0)
@@ -67,7 +64,7 @@ struct DayView: View {
                 // Show textfield over button of isInput
                 if isInputtingHighlight {
                     TextField("Input", text: $text, onCommit:  {
-                        highLights.append(DailyHighlight(task: text))
+                        highLights.append(DailyHighlight(task: text, day: Day.random))
                         isInputtingHighlight = false
                         text = ""
                     })
@@ -79,7 +76,7 @@ struct DayView: View {
                 } else {
                     // Make invis
                     TextField("Input", text: $text, onCommit: {
-                        highLights.append(DailyHighlight(task: text))
+                        highLights.append(DailyHighlight(task: text, day: Day.random))
                         isInputtingHighlight = false
                     })
                     .textCase(.uppercase)
@@ -87,9 +84,9 @@ struct DayView: View {
                     .multilineTextAlignment(.center)
                     .opacity(0.2)
                 }
-            }.frame(width: viewWidth, height: 80, alignment: .center)
+            }.frame(width: DayView.size.width, height: 80, alignment: .center)
             .padding(0)
-        }.frame(width: viewWidth, height: 300, alignment: .center)
+        }.frame(width: DayView.size.width, height: DayView.size.height, alignment: .center)
         .background(akWhiter)
         .cornerRadius(20)
     }
@@ -97,6 +94,6 @@ struct DayView: View {
 
 struct DayView_Previews: PreviewProvider {
     static var previews: some View {
-        DayView(day: "Test Day")
+        DayView(day: Day.random)
     }
 }

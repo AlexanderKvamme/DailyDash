@@ -126,13 +126,13 @@ struct MainScreenContentView: View {
             
             // Days
             HStack(spacing: 20) {
-                DayView(day: "Monday")
-                DayView(day: "Tuesday")
-                DayView(day: "Wednesday")
-                DayView(day: "Thursday")
-                DayView(day: "Friday")
-                DayView(day: "Saturday")
-                DayView(day: "Sunday")
+                DayView(day: Day.random)
+                DayView(day: Day.random)
+                DayView(day: Day.random)
+                DayView(day: Day.random)
+                DayView(day: Day.random)
+                DayView(day: Day.random)
+                DayView(day: Day.random)
             }.padding()
             
             // 'Other' section

@@ -21,7 +21,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     // MARK: Delegate methods
 
-    func setVC<T: View>(_ v: T) {
+    func setInitialSwiftUIView<T: View>(_ v: T) {
         window = NSWindow(
             contentRect: NSRect(x: 0, y: 0, width: 480, height: 100),
             styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
@@ -34,9 +34,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
-//        let dv = DayView(day: "swag")
-//        setVC(dv)
-//        return
+        setInitialSwiftUIView(WeeklyTestView())
+        return
             
         // Request location
         locationService.setDelegate(self)
@@ -49,7 +48,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 let res = try result.get()
                 DispatchQueue.main.async {
                     let v = MainScreenContentView(currentWeather: res)
-                    self.setVC(v)
+                    self.setInitialSwiftUIView(v)
                 }
             } catch {
                 fatalError("outmost catch: \(error) \(error.localizedDescription)")
