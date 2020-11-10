@@ -16,25 +16,24 @@ struct DayView: View {
 
     static let size = NSSize(width: 240, height: 300)
     
-    private var day: Day
-    @State var highLights = [DailyHighlight]()
+    @ObservedObject var viewModel: DayViewModel
     @State var text = ""
     @State var isFR = true
     @State var isInputtingHighlight = false
     
-    init(day: Day) {
-        self.day = day
+    init(viewModel: DayViewModel) {
+        self.viewModel = viewModel
     }
     
     var body: some View {
         VStack {
-            Text(day.toString())
+            Text($viewModel.day.wrappedValue.weekdayString())
                 .multilineTextAlignment(.center)
                 .foregroundColor(akBlack)
                 .font(.custom(glamour, size: 32))
                 .padding(EdgeInsets(top: 40, leading: 0, bottom: 0, trailing: 0))
             Spacer()
-            List(highLights) { highlight in
+            List($viewModel.highlights.wrappedValue) { highlight in
                 ZStack {
                     RoundedRectangle(cornerRadius: 10)
                         .foregroundColor(akBeige)
@@ -64,7 +63,7 @@ struct DayView: View {
                 // Show textfield over button of isInput
                 if isInputtingHighlight {
                     TextField("Input", text: $text, onCommit:  {
-                        highLights.append(DailyHighlight(task: text, day: Day.random))
+                        $viewModel.highlights.wrappedValue.append(DailyHighlight(task: text, day: Date().toDay()))
                         isInputtingHighlight = false
                         text = ""
                     })
@@ -76,7 +75,7 @@ struct DayView: View {
                 } else {
                     // Make invis
                     TextField("Input", text: $text, onCommit: {
-                        highLights.append(DailyHighlight(task: text, day: Day.random))
+                        $viewModel.highlights.wrappedValue.append(DailyHighlight(task: text, day: Date().toDay()))
                         isInputtingHighlight = false
                     })
                     .textCase(.uppercase)
@@ -94,6 +93,7 @@ struct DayView: View {
 
 struct DayView_Previews: PreviewProvider {
     static var previews: some View {
-        DayView(day: Day.random)
+        let day = Day.random
+        DayView(viewModel: DayViewModel(day))
     }
 }

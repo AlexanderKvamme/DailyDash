@@ -18,13 +18,15 @@
 		DD1F4047254EDD1800F065E5 /* NSTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1F4046254EDD1800F065E5 /* NSTestView.swift */; };
 		DD20F0422550A8F500CD5C90 /* DailyHighlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD20F0412550A8F500CD5C90 /* DailyHighlight.swift */; };
 		DD2BD92C254EB7AF00025104 /* WeeklyTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2BD92B254EB7AF00025104 /* WeeklyTestView.swift */; };
+		DD2C9B3F2558512B005B455D /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2C9B3E2558512B005B455D /* DateExtensions.swift */; };
 		DD4C0B3D2545E3D9000ECFDB /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = DD4C0B3C2545E3D9000ECFDB /* Introspect */; };
 		DD5586DF254FF6C0002870C4 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5586DE254FF6C0002870C4 /* Day.swift */; };
 		DD5586E2254FFAC7002870C4 /* DateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5586E1254FFAC7002870C4 /* DateView.swift */; };
 		DD64A1482531CFE900E80058 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64A1472531CFE900E80058 /* WeatherService.swift */; };
 		DD64A14B2531D94B00E80058 /* WeatherHour.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64A14A2531D94B00E80058 /* WeatherHour.swift */; };
 		DD68379225317F10004EE805 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD68379125317F10004EE805 /* LocationService.swift */; };
-		DDAA5AFF254EF62A00EE2DC5 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAA5AFE254EF62A00EE2DC5 /* StorageService.swift */; };
+		DDD64CBD2558613E004FD09C /* Persistance in Resources */ = {isa = PBXBuildFile; fileRef = DDD64CBC2558613E004FD09C /* Persistance */; };
+		DDD64CC725586161004FD09C /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD64CC625586161004FD09C /* StorageService.swift */; };
 		DDE97B0C253CDE2000ACCC31 /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE97B0B253CDE2000ACCC31 /* DayView.swift */; };
 /* End PBXBuildFile section */
 
@@ -42,12 +44,14 @@
 		DD1F4046254EDD1800F065E5 /* NSTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTestView.swift; sourceTree = "<group>"; };
 		DD20F0412550A8F500CD5C90 /* DailyHighlight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyHighlight.swift; sourceTree = "<group>"; };
 		DD2BD92B254EB7AF00025104 /* WeeklyTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyTestView.swift; sourceTree = "<group>"; };
+		DD2C9B3E2558512B005B455D /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		DD5586DE254FF6C0002870C4 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		DD5586E1254FFAC7002870C4 /* DateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateView.swift; sourceTree = "<group>"; };
 		DD64A1472531CFE900E80058 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		DD64A14A2531D94B00E80058 /* WeatherHour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherHour.swift; sourceTree = "<group>"; };
 		DD68379125317F10004EE805 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
-		DDAA5AFE254EF62A00EE2DC5 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		DDD64CBC2558613E004FD09C /* Persistance */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Persistance; sourceTree = "<group>"; };
+		DDD64CC625586161004FD09C /* StorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		DDE97B0B253CDE2000ACCC31 /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,17 +88,13 @@
 			isa = PBXGroup;
 			children = (
 				DD0E0B772529E367009C83F3 /* AppDelegate.swift */,
-				DD64A1472531CFE900E80058 /* WeatherService.swift */,
 				DD0E0B792529E367009C83F3 /* MainScreenContentView.swift */,
-				DDE97B0B253CDE2000ACCC31 /* DayView.swift */,
-				DD5586E1254FFAC7002870C4 /* DateView.swift */,
-				DD20F0412550A8F500CD5C90 /* DailyHighlight.swift */,
-				DD1F404C254EE42A00F065E5 /* New Group */,
-				DDAA5AFD254EF61100EE2DC5 /* Persistance */,
-				DD0A9ED02530F907003C3870 /* NetworkService.swift */,
-				DD64A14A2531D94B00E80058 /* WeatherHour.swift */,
-				DD5586DE254FF6C0002870C4 /* Day.swift */,
-				DD68379125317F10004EE805 /* LocationService.swift */,
+				DDD64CC525586161004FD09C /* Persistance */,
+				DD919F572558560400C0750E /* Weather */,
+				DD1F404C254EE42A00F065E5 /* Days and highlights */,
+				DD919F56255855EF00C0750E /* Networking */,
+				DD919F53255855C800C0750E /* Date */,
+				DD919F54255855D300C0750E /* Location */,
 				DD0E0B7B2529E369009C83F3 /* Assets.xcassets */,
 				DD0E0B802529E369009C83F3 /* Main.storyboard */,
 				DD0E0B832529E369009C83F3 /* Info.plist */,
@@ -121,22 +121,60 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		DD1F404C254EE42A00F065E5 /* New Group */ = {
+		DD1F404C254EE42A00F065E5 /* Days and highlights */ = {
 			isa = PBXGroup;
 			children = (
+				DDD64CBC2558613E004FD09C /* Persistance */,
+				DD5586DE254FF6C0002870C4 /* Day.swift */,
+				DDE97B0B253CDE2000ACCC31 /* DayView.swift */,
+				DD5586E1254FFAC7002870C4 /* DateView.swift */,
+				DD20F0412550A8F500CD5C90 /* DailyHighlight.swift */,
 				DD2BD92B254EB7AF00025104 /* WeeklyTestView.swift */,
 				DD1F4046254EDD1800F065E5 /* NSTestView.swift */,
 			);
-			path = "New Group";
+			path = "Days and highlights";
 			sourceTree = "<group>";
 		};
-		DDAA5AFD254EF61100EE2DC5 /* Persistance */ = {
+		DD919F53255855C800C0750E /* Date */ = {
 			isa = PBXGroup;
 			children = (
-				DDAA5AFE254EF62A00EE2DC5 /* StorageService.swift */,
+				DD2C9B3E2558512B005B455D /* DateExtensions.swift */,
+			);
+			path = Date;
+			sourceTree = "<group>";
+		};
+		DD919F54255855D300C0750E /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				DD68379125317F10004EE805 /* LocationService.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		DD919F56255855EF00C0750E /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				DD0A9ED02530F907003C3870 /* NetworkService.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		DD919F572558560400C0750E /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+				DD64A14A2531D94B00E80058 /* WeatherHour.swift */,
+				DD64A1472531CFE900E80058 /* WeatherService.swift */,
+			);
+			path = Weather;
+			sourceTree = "<group>";
+		};
+		DDD64CC525586161004FD09C /* Persistance */ = {
+			isa = PBXGroup;
+			children = (
+				DDD64CC625586161004FD09C /* StorageService.swift */,
 			);
 			name = Persistance;
-			path = "New Group/Persistance";
+			path = "Days and highlights/Persistance";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,6 +246,7 @@
 				DD0E0B822529E369009C83F3 /* Main.storyboard in Resources */,
 				DD0E0B8D252A11F3009C83F3 /* GlamourAbsolute_Regular.otf in Resources */,
 				DD0E0B7F2529E369009C83F3 /* Preview Assets.xcassets in Resources */,
+				DDD64CBD2558613E004FD09C /* Persistance in Resources */,
 				DD0E0B7C2529E369009C83F3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,17 +260,18 @@
 			files = (
 				DD20F0422550A8F500CD5C90 /* DailyHighlight.swift in Sources */,
 				DD0A9ED12530F907003C3870 /* NetworkService.swift in Sources */,
-				DDAA5AFF254EF62A00EE2DC5 /* StorageService.swift in Sources */,
 				DD5586E2254FFAC7002870C4 /* DateView.swift in Sources */,
 				DDE97B0C253CDE2000ACCC31 /* DayView.swift in Sources */,
 				DD68379225317F10004EE805 /* LocationService.swift in Sources */,
 				DD2BD92C254EB7AF00025104 /* WeeklyTestView.swift in Sources */,
+				DD2C9B3F2558512B005B455D /* DateExtensions.swift in Sources */,
 				DD0E0B7A2529E367009C83F3 /* MainScreenContentView.swift in Sources */,
 				DD5586DF254FF6C0002870C4 /* Day.swift in Sources */,
 				DD1F4047254EDD1800F065E5 /* NSTestView.swift in Sources */,
 				DD64A1482531CFE900E80058 /* WeatherService.swift in Sources */,
 				DD64A14B2531D94B00E80058 /* WeatherHour.swift in Sources */,
 				DD0E0B782529E367009C83F3 /* AppDelegate.swift in Sources */,
+				DDD64CC725586161004FD09C /* StorageService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

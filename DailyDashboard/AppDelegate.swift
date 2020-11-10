@@ -8,6 +8,7 @@
 
 import Cocoa
 import SwiftUI
+import CoreLocation
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {

@@ -9,17 +9,11 @@
 import Foundation
 
 
-struct Day: Codable {
+struct Day: Identifiable, Codable {
     let day: Int
     let month: Int
     let year: Int
-    
-    static var random: Day {
-        let d = Int.random(in: 0...30)
-        let m = Int.random(in: 0...12)
-        let y = Int.random(in: 1900...2020)
-        return Day(day: d, month: m, year: y)
-    }
+    var id = UUID()
     
     func toDate() -> Date {
         var dateComponents = DateComponents()
@@ -31,5 +25,22 @@ struct Day: Codable {
     
     func toString() -> String {
          return "day \(day)"
+    }
+    
+    func weekdayString() -> String {
+        let date = self.toDate()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        let dayInWeek = dateFormatter.string(from: date)
+        return dayInWeek
+    }
+}
+
+extension Day {
+    static var random: Day {
+        let d = Int.random(in: 0...30)
+        let m = Int.random(in: 0...12)
+        let y = Int.random(in: 1900...2020)
+        return Day(day: d, month: m, year: y)
     }
 }
