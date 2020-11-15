@@ -1,14 +1,8 @@
-//
-//  DailyHighlight.swift
-//  DailyDashboard
-//
-//  Created by Alexander Kvamme on 02/11/2020.
-//  Copyright © 2020 Alexander Kvamme. All rights reserved.
-//
-
 import Foundation
 
 struct DailyHighlight: Identifiable, Codable {
+    
+    static var mock = DailyHighlight(task: "Mock task", day: Day.random)
     var id = UUID()
     var task = "Alexander"
     var day: Day

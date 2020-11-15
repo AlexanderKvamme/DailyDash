@@ -1,15 +1,5 @@
-//
-//  DayView.swift
-//  DailyDashboard
-//
-//  Created by Alexander Kvamme on 18/10/2020.
-//  Copyright © 2020 Alexander Kvamme. All rights reserved.
-//
-
 import SwiftUI
 import AppKit
-import Introspect
-
 
 
 struct DayView: View {
@@ -94,6 +84,9 @@ struct DayView: View {
 struct DayView_Previews: PreviewProvider {
     static var previews: some View {
         let day = Day.random
-        DayView(viewModel: DayViewModel(day))
+        Group {
+            DayView(viewModel: DayViewModel(day))
+            DayView(viewModel: DayViewModel(day))
+        }
     }
 }

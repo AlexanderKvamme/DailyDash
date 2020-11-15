@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  DailyDashboard
-//
-//  Created by Alexander Kvamme on 04/10/2020.
-//  Copyright © 2020 Alexander Kvamme. All rights reserved.
-//
-
 import Cocoa
 import SwiftUI
 import CoreLocation
@@ -62,7 +54,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 extension AppDelegate: LocationServiceDelegate {
     func updateLocation(to location: CLLocation) {
-        print("update location")
         UserDefaults.standard.setValue(location.coordinate.latitude, forKeyPath: "latitude")
         UserDefaults.standard.setValue(location.coordinate.longitude, forKeyPath: "longitude")
     }

@@ -1,29 +1,12 @@
-//
-//  TestSwiftUIView.swift
-//  DailyDashboard
-//
-//  Created by Alexander Kvamme on 01/11/2020.
-//  Copyright © 2020 Alexander Kvamme. All rights reserved.
-//
-
 import SwiftUI
 import AppKit
 import Introspect
 
-
 class DayViewModel: ObservableObject {
 
     @Published var highlights: [DailyHighlight] {
-        didSet(newValue) {
-            print("didSet")
-            print("did set highlight. \(highlights) will update user defaults")
-            print("did set highlight. \(newValue) will update user defaults")
+        didSet {
             StorageService.putHighlightArray(arr: highlights, for: day)
-            
-            print("gonna try to get it again")
-            let highlights = StorageService.getHighlightArray(forDay: day)
-            print("bam got highlights: ", highlights)
-            print("-----didset--- end.----")
         }
     }
     @Published var day: Day {
@@ -35,8 +18,18 @@ class DayViewModel: ObservableObject {
     init(_ day: Day) {
         self.day = day
 //        StorageService.wipe()
-        highlights = StorageService.getHighlightArray(forDay: day)
-        print("initialized a day with this highlight array: ", highlights)
+        self.highlights = StorageService.getHighlightArray(forDay: day)
+    }
+    
+    convenience init(_ day: Day, highlights: [DailyHighlight]) {
+        self.init(day)
+        self.highlights = highlights
+    }
+    
+    // MARK: - Methods
+    
+    func deleteHighlight(_ offset: IndexSet) {
+        print("bam would try to delete offset: ", offset)
     }
 }
 
