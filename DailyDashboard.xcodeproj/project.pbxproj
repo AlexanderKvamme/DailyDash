@@ -28,6 +28,7 @@
 		DD6BCA20255DC8480049B69A /* HighlightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6BCA1F255DC8480049B69A /* HighlightView.swift */; };
 		DDD64CBD2558613E004FD09C /* Persistance in Resources */ = {isa = PBXBuildFile; fileRef = DDD64CBC2558613E004FD09C /* Persistance */; };
 		DDD64CC725586161004FD09C /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD64CC625586161004FD09C /* StorageService.swift */; };
+		DDD688CE2561AC7000F309CF /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = DDD688CD2561AC7000F309CF /* GRDB */; };
 		DDE97B0C253CDE2000ACCC31 /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE97B0B253CDE2000ACCC31 /* DayView.swift */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDD688CE2561AC7000F309CF /* GRDB in Frameworks */,
 				DD0E0B91252A1A2A009C83F3 /* Charts in Frameworks */,
 				DD4C0B3D2545E3D9000ECFDB /* Introspect in Frameworks */,
 			);
@@ -199,6 +201,7 @@
 			packageProductDependencies = (
 				DD0E0B90252A1A2A009C83F3 /* Charts */,
 				DD4C0B3C2545E3D9000ECFDB /* Introspect */,
+				DDD688CD2561AC7000F309CF /* GRDB */,
 			);
 			productName = DailyDashboard;
 			productReference = DD0E0B742529E367009C83F3 /* DailyDashboard.app */;
@@ -231,6 +234,7 @@
 			packageReferences = (
 				DD0E0B8F252A1A2A009C83F3 /* XCRemoteSwiftPackageReference "swiftui-charts" */,
 				DD4C0B3B2545E3D9000ECFDB /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
+				DDD688CC2561AC7000F309CF /* XCRemoteSwiftPackageReference "GRDB" */,
 			);
 			productRefGroup = DD0E0B752529E367009C83F3 /* Products */;
 			projectDirPath = "";
@@ -492,6 +496,14 @@
 				kind = branch;
 			};
 		};
+		DDD688CC2561AC7000F309CF /* XCRemoteSwiftPackageReference "GRDB" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/groue/GRDB.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -504,6 +516,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DD4C0B3B2545E3D9000ECFDB /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
 			productName = Introspect;
+		};
+		DDD688CD2561AC7000F309CF /* GRDB */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DDD688CC2561AC7000F309CF /* XCRemoteSwiftPackageReference "GRDB" */;
+			productName = GRDB;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

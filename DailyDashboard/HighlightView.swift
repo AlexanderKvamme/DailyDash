@@ -19,8 +19,6 @@ struct HighlightView: View {
                     Spacer()
                     Button(action: {
                       print("button pressed - would delete")
-                        StorageService.deleteHighlight(highlight)
-                        
                     }) {
                         Image(systemName: "xmark.circle.fill")
                             .font(.largeTitle)
