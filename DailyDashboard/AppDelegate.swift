@@ -1,6 +1,9 @@
 import Cocoa
 import SwiftUI
 import CoreLocation
+import GRDB
+
+
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -11,6 +14,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let locationService = LocationService.shared
     let networkService = NetworkService()
     var weatherService: WeatherService!
+    var database: DatabaseWriter!
 
     // MARK: Delegate methods
 

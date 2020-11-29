@@ -3,11 +3,12 @@ import Foundation
 struct DailyHighlight: Identifiable, Codable {
     
     static var mock = DailyHighlight(task: "Mock task", day: Day.random)
-    var id = UUID()
+    var id: String
     var task = "Alexander"
     var day: Day
     
-    init(task: String, day: Day) {
+    init(task: String, day: Day, id: String = UUID().uuidString) {
+        self.id = id
         self.task = task
         self.day = day
     }
