@@ -34,6 +34,7 @@ struct DayView: View {
                 }
                 .frame(width: DayView.size.width-32, height: 40, alignment: .center)
                 .padding(0)
+                .background(Color.clear)
             }
             .padding(0)
             .listStyle(SidebarListStyle())

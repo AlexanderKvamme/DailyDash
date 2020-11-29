@@ -26,6 +26,7 @@
 		DD64A14B2531D94B00E80058 /* WeatherHour.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64A14A2531D94B00E80058 /* WeatherHour.swift */; };
 		DD68379225317F10004EE805 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD68379125317F10004EE805 /* LocationService.swift */; };
 		DD6BCA20255DC8480049B69A /* HighlightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6BCA1F255DC8480049B69A /* HighlightView.swift */; };
+		DD9C1E3B25740D0E0009E439 /* NativeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9C1E3A25740D0E0009E439 /* NativeExtensions.swift */; };
 		DDD64CBD2558613E004FD09C /* Persistance in Resources */ = {isa = PBXBuildFile; fileRef = DDD64CBC2558613E004FD09C /* Persistance */; };
 		DDD64CC725586161004FD09C /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD64CC625586161004FD09C /* StorageService.swift */; };
 		DDD688CE2561AC7000F309CF /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = DDD688CD2561AC7000F309CF /* GRDB */; };
@@ -52,7 +53,8 @@
 		DD64A1472531CFE900E80058 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		DD64A14A2531D94B00E80058 /* WeatherHour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherHour.swift; sourceTree = "<group>"; };
 		DD68379125317F10004EE805 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
-		DD6BCA1F255DC8480049B69A /* HighlightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightView.swift; sourceTree = "<group>"; };
+		DD6BCA1F255DC8480049B69A /* HighlightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HighlightView.swift; path = DailyDashboard/HighlightView.swift; sourceTree = SOURCE_ROOT; };
+		DD9C1E3A25740D0E0009E439 /* NativeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeExtensions.swift; sourceTree = "<group>"; };
 		DDD64CBC2558613E004FD09C /* Persistance */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Persistance; sourceTree = "<group>"; };
 		DDD64CC625586161004FD09C /* StorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		DDE97B0B253CDE2000ACCC31 /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				DD0E0B772529E367009C83F3 /* AppDelegate.swift */,
 				DD6BCA1F255DC8480049B69A /* HighlightView.swift */,
 				DD0E0B792529E367009C83F3 /* MainScreenContentView.swift */,
+				DD9C1E3A25740D0E0009E439 /* NativeExtensions.swift */,
 				DDD64CC525586161004FD09C /* Persistance */,
 				DD919F572558560400C0750E /* Weather */,
 				DD1F404C254EE42A00F065E5 /* Days and highlights */,
@@ -273,6 +276,7 @@
 				DD2BD92C254EB7AF00025104 /* WeeklyTestView.swift in Sources */,
 				DD2C9B3F2558512B005B455D /* DateExtensions.swift in Sources */,
 				DD0E0B7A2529E367009C83F3 /* MainScreenContentView.swift in Sources */,
+				DD9C1E3B25740D0E0009E439 /* NativeExtensions.swift in Sources */,
 				DD5586DF254FF6C0002870C4 /* Day.swift in Sources */,
 				DD1F4047254EDD1800F065E5 /* NSTestView.swift in Sources */,
 				DD64A1482531CFE900E80058 /* WeatherService.swift in Sources */,
