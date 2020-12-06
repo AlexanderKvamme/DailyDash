@@ -14,26 +14,25 @@ struct HighlightView: View {
             ZStack {
                 RoundedRectangle(cornerRadius: 10)
                     .foregroundColor(akBeige)
-                    .foregroundColor(Color.red)
-                HStack(alignment: .center, spacing: nil, content: {
+                HStack() {
                     Spacer()
                     Button(action: {
-                      print("button pressed - would delete")
+                        StorageService.delete(highlight: highlight)
                     }) {
-                        Image(systemName: "xmark.circle.fill")
+                        Image(systemName: "xmark.circle.fill").resizable()
                             .font(.largeTitle)
-                            .foregroundColor(akBlack)
-                            .opacity(0.1)
-                            .padding(.trailing, 8)
+                            .aspectRatio(contentMode: .fit)
                     }
-                })
+                    .buttonStyle(BorderlessButtonStyle())
+                    .foregroundColor(akBlack)
+                    .padding(.trailing, 8)
+                }
                 Text(String(highlight.task))
                     .multilineTextAlignment(.center)
                     .foregroundColor(akBlack)
                     .font(.custom(futuraBold, size: 16))
             }
             .frame(width: DayView.size.width-32, height: 40, alignment: .center)
-            .padding(0)
         }
     }
 }

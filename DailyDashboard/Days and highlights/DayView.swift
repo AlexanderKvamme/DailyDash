@@ -17,20 +17,17 @@ struct DayView: View {
     
     var body: some View {
         VStack {
+            // Name of day
             Text($viewModel.day.wrappedValue.weekdayString())
                 .multilineTextAlignment(.center)
                 .foregroundColor(akBlack)
                 .font(.custom(glamour, size: 32))
                 .padding(EdgeInsets(top: 40, leading: 0, bottom: 0, trailing: 0))
             Spacer()
+            // List of highlightViews
             List($viewModel.highlights.wrappedValue) { highlight in
                 ZStack {
-                    RoundedRectangle(cornerRadius: 10)
-                        .foregroundColor(akBeige)
-                    Text(String(highlight.task))
-                        .multilineTextAlignment(.center)
-                        .foregroundColor(akBlack)
-                        .font(.custom(futuraBold, size: 16))
+                    HighlightView(highlight: highlight)
                 }
                 .frame(width: DayView.size.width-32, height: 40, alignment: .center)
                 .padding(0)
@@ -38,6 +35,7 @@ struct DayView: View {
             }
             .padding(0)
             .listStyle(SidebarListStyle())
+            // Highlight input
             ZStack {
                 RoundedRectangle(cornerRadius: 10)
                     .foregroundColor(akBeige)

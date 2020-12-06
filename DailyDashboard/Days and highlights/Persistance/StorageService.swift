@@ -106,6 +106,17 @@ final class StorageService {
         return highlights
     }
     
+    static func delete(highlight: DailyHighlight) {
+        do {
+            try dbQueue?.write({ (db) in
+                print("tryna delete highlight: ", highlight)
+                try db.execute(sql: "DELETE FROM highlights WHERE id = (?)", arguments: [highlight.id])
+            })
+        } catch {
+            print("Error:")
+        }
+    }
+    
     static func makeKey(for date: Date) -> String {
         return StorageService.makeKey(for: date.toDay())
     }

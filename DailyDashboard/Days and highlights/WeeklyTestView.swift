@@ -39,9 +39,7 @@ struct WeeklyTestView: View {
     let daysOfWeek: [Day] = Date.getCurrentWeek().map({$0.toDay()})
     @State var isFR = true
     
-    init() {
-        printKeys()
-    }
+    init() {}
     
     var body: some View {
         VStack {
@@ -53,20 +51,8 @@ struct WeeklyTestView: View {
                 }
               }
             .frame(height: 100)
-            .background(Color.red)
         }.frame(width: 2000, height: 300, alignment: .center)
-        .background(Color.yellow)
         .cornerRadius(20)
-    }
-    
-    // MARK: - Methods
-    
-    private func printKeys() {
-        for key in Array(UserDefaults.standard.dictionaryRepresentation().keys) {
-            if key.contains("daily-highlight") {
-                print("dhl key found: ", key) // UserDefaults.standard.removeObject(forKey: key)
-            }
-        }
     }
 }
 
