@@ -24,9 +24,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
             backing: .buffered, defer: false)
         window.center()
-        window.setFrameAutosaveName("Main Window")
         window.contentView = NSHostingView(rootView: v)
         window.makeKeyAndOrderFront(nil)
+        window.setFrameAutosaveName("Main Window")
     }
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
