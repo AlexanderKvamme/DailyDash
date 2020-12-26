@@ -45,7 +45,6 @@ final class WeatherService: NSObject {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         
         do {
-            print("bam data: ", String(decoding: data, as: UTF8.self))
             let decoded = try decoder.decode(T.self, from: data)
             // FIXME: Handle successfull decoding
             print("Succesfully decoded ", T.self)

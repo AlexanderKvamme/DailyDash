@@ -2,6 +2,9 @@ import GRDB
 import Foundation
 import AppKit
 
+fileprivate let idColumn = Column("id")
+fileprivate let taskColumn = Column("task")
+fileprivate let dayKeyColumn = Column("daykey")
 
 final class StorageService {
 
@@ -11,17 +14,40 @@ final class StorageService {
 
     // MARK: - Static methods
     
-    /// Highlights are stored as arrays cause there can be multiples for a day (One for each category)
-    static func putHighlightArray(arr: [DailyHighlight], for day: Day) {
-        print("tryna put highlight")
-        let key = makeKey(for: day)
+    static private func makeSchemas(on db: DatabaseQueue) throws {
         do {
-            try arr.forEach { (highlight) in
-                try dbQueue?.write { db in
-                    // Replace or insert
-                    try db.execute(sql: "INSERT OR IGNORE INTO days (day_key, day, month, year) VALUES (?, ?, ?, ?);", arguments: [key, day.day, day.month, day.year])
-                    try db.execute(sql: "INSERT OR IGNORE INTO highlights (id, task, day_key) VALUES (?, ?, ?);", arguments: [highlight.id, highlight.task, key])
+            try db.write { db in
+                // Create "days" table
+                // TODO: Possibly remove 
+                if try db.tableExists("days") == false {
+                    try db.create(table: "days") { t in
+                        t.column("id", .integer).notNull().unique()
+                        t.column("key", .text).primaryKey().notNull().unique()
+                        t.column("day", .integer).notNull()
+                        t.column("month", .integer).notNull()
+                        t.column("year", .integer).notNull()
+                    }
                 }
+                
+                // Create "highlights" table
+                if try db.tableExists("highlights") == false {
+                    try db.create(table: "highlights") { t in
+                        t.column("id", .text).primaryKey().notNull().unique()
+                        t.column("dayKey", .text).notNull()
+                        t.column("task", .text).notNull()
+                    }
+                }
+            }
+        } catch {
+            throw error
+        }
+    }
+    
+    /// Highlights are stored as arrays cause there can be multiples for a day (One for each category)
+    static func putHighlightArray(arr: [Highlight]) {
+        do {
+            try dbQueue?.write { db in
+               try arr.forEach { try $0.insert(db) }
             }
         } catch {
             print(error)
@@ -32,7 +58,12 @@ final class StorageService {
     
     private static func makeDatabase() -> DatabaseQueue {
         let dbQueue = try! DatabaseQueue(path: "db.sqlite")
-        try! makeSchemas(on: dbQueue)
+        do {
+            try makeSchemas(on: dbQueue)
+        } catch {
+            print("Error creating database: ", error)
+        }
+        
         return dbQueue
     }
     
@@ -46,58 +77,18 @@ final class StorageService {
             
             print("HIGHLIGHTS TABLE:")
             try dbQueue?.read { db in
-                let rows = try Row.fetchAll(db, sql: "SELECT * FROM highlights")
-                rows.forEach({print("highlight: ", $0)})
+                try Highlight.fetchAll(db).forEach({ print($0) })
             }
         } catch {
             print(error)
         }
     }
-
-    static private func makeSchemas(on db: DatabaseQueue) throws {
-        do {
-            try db.write { db in
-                // Make "days" table
-                try db.execute(sql: """
-                    CREATE TABLE IF NOT EXISTS days (
-                    day_key TEXT PRIMARY KEY UNIQUE NOT NULL,
-                    day INTEGER NOT NULL,
-                    month INTEGER NOT NULL,
-                    year INTEGER NOT NULL
-                    );
-                    """)
-                // Make "highlights" table
-                try db.execute(sql: """
-                    CREATE TABLE IF NOT EXISTS highlights (
-                    id TEXT PRIMARY KEY NOT NULL UNIQUE,
-                    task TEXT NOT NULL,
-                    day_key TEXT NOT NULL,
-                    CONSTRAINT fk_days
-                        FOREIGN KEY (day_key)
-                        REFERENCES days(day_key)
-                        ON DELETE CASCADE
-                    );
-                    """)
-            }
-        } catch {
-            throw NetworkServiceError.testError
-        }
-    }
     
-    static func getHighlightArray(forDay day: Day) -> [DailyHighlight] {
-        var highlights = [DailyHighlight]()
+    static func getHighlightArray(forDay day: Day) -> [Highlight] {
+        var highlights = [Highlight]()
         do {
             try dbQueue?.read({ (db) in
-                let rows = try Row.fetchAll(db, sql: "SELECT * FROM highlights INNER JOIN days on highlights.day_key=days.day_key WHERE day=? AND month=? AND year=?;", arguments: [day.day, day.month, day.year])
-                    rows.forEach { (row) in
-                        let task: String = row["task"]
-                        let d: Int       = row["day"]
-                        let m: Int       = row["month"]
-                        let y: Int       = row["year"]
-                        let id: String   = row["id"]
-                        let highlight = DailyHighlight(task: task, day: Day(day: d, month: m, year: y), id: id)
-                        highlights.append(highlight)
-                    }
+                highlights = try Highlight.filter(dayKeyColumn == day.key).fetchAll(db)
             })
         } catch {
             print(error)
@@ -106,11 +97,10 @@ final class StorageService {
         return highlights
     }
     
-    static func delete(highlight: DailyHighlight) {
+    static func delete(highlight: Highlight) {
         do {
             try dbQueue?.write({ (db) in
-                print("tryna delete highlight: ", highlight)
-                try db.execute(sql: "DELETE FROM highlights WHERE id = (?)", arguments: [highlight.id])
+                try highlight.delete(db)
             })
         } catch {
             print("Error:")
@@ -118,22 +108,17 @@ final class StorageService {
     }
     
     static func makeKey(for date: Date) -> String {
-        return StorageService.makeKey(for: date.toDay())
+        return date.toDay().toKey()
     }
     
     // MARK: Helper methods
-    
-    private static func makeKey(for day: Day) -> String {
-        let key = "daily-highlight-\(day.day)-\(day.month)-\(day.year)"
-        return key
-    }
     
     static func wipe() {
         print("Wiping database...")
         do {
             try dbQueue?.write { db in
-                try db.execute(sql: "DROP TABLE days;")
-                try db.execute(sql: "DROP TABLE highlights;")
+                try db.drop(table: "days")
+                try db.drop(table: "highlights")
             }
             
             if let db = dbQueue {

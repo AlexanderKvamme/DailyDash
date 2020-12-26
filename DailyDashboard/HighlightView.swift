@@ -3,9 +3,9 @@ import AppKit
 
 struct HighlightView: View {
  
-    @State private var highlight: DailyHighlight
+    @State private var highlight: Highlight
     
-    init(highlight: DailyHighlight) {
+    init(highlight: Highlight) {
         _highlight = State(initialValue: highlight)
     }
     
@@ -40,6 +40,6 @@ struct HighlightView: View {
 
 struct HighlightView_Previews: PreviewProvider {
     static var previews: some View {
-        HighlightView(highlight: DailyHighlight.mock)
+        HighlightView(highlight: Highlight.mock)
     }
 }

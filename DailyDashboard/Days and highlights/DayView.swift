@@ -52,7 +52,7 @@ struct DayView: View {
                 // Show textfield over button of isInput
                 if isInputtingHighlight {
                     TextField("Input", text: $text, onCommit:  {
-                        $viewModel.highlights.wrappedValue.append(DailyHighlight(task: text, day: Date().toDay()))
+                        $viewModel.highlights.wrappedValue.append(Highlight(task: text, day: viewModel.day))
                         isInputtingHighlight = false
                         text = ""
                     })
@@ -64,7 +64,7 @@ struct DayView: View {
                 } else {
                     // Make invis
                     TextField("Input", text: $text, onCommit: {
-                        $viewModel.highlights.wrappedValue.append(DailyHighlight(task: text, day: Date().toDay()))
+                        $viewModel.highlights.wrappedValue.append(Highlight(task: text, day: viewModel.day))
                         isInputtingHighlight = false
                     })
                     .textCase(.uppercase)

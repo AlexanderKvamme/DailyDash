@@ -16,7 +16,7 @@
 		DD0E0B8D252A11F3009C83F3 /* GlamourAbsolute_Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = DD0E0B8C252A11F3009C83F3 /* GlamourAbsolute_Regular.otf */; };
 		DD0E0B91252A1A2A009C83F3 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = DD0E0B90252A1A2A009C83F3 /* Charts */; };
 		DD1F4047254EDD1800F065E5 /* NSTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1F4046254EDD1800F065E5 /* NSTestView.swift */; };
-		DD20F0422550A8F500CD5C90 /* DailyHighlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD20F0412550A8F500CD5C90 /* DailyHighlight.swift */; };
+		DD20F0422550A8F500CD5C90 /* Highlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD20F0412550A8F500CD5C90 /* Highlight.swift */; };
 		DD2BD92C254EB7AF00025104 /* WeeklyTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2BD92B254EB7AF00025104 /* WeeklyTestView.swift */; };
 		DD2C9B3F2558512B005B455D /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2C9B3E2558512B005B455D /* DateExtensions.swift */; };
 		DD4C0B3D2545E3D9000ECFDB /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = DD4C0B3C2545E3D9000ECFDB /* Introspect */; };
@@ -45,7 +45,7 @@
 		DD0E0B842529E369009C83F3 /* DailyDashboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DailyDashboard.entitlements; sourceTree = "<group>"; };
 		DD0E0B8C252A11F3009C83F3 /* GlamourAbsolute_Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GlamourAbsolute_Regular.otf; sourceTree = "<group>"; };
 		DD1F4046254EDD1800F065E5 /* NSTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTestView.swift; sourceTree = "<group>"; };
-		DD20F0412550A8F500CD5C90 /* DailyHighlight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyHighlight.swift; sourceTree = "<group>"; };
+		DD20F0412550A8F500CD5C90 /* Highlight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Highlight.swift; sourceTree = "<group>"; };
 		DD2BD92B254EB7AF00025104 /* WeeklyTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyTestView.swift; sourceTree = "<group>"; };
 		DD2C9B3E2558512B005B455D /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		DD5586DE254FF6C0002870C4 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
@@ -136,7 +136,7 @@
 				DD5586DE254FF6C0002870C4 /* Day.swift */,
 				DDE97B0B253CDE2000ACCC31 /* DayView.swift */,
 				DD5586E1254FFAC7002870C4 /* DateView.swift */,
-				DD20F0412550A8F500CD5C90 /* DailyHighlight.swift */,
+				DD20F0412550A8F500CD5C90 /* Highlight.swift */,
 				DD2BD92B254EB7AF00025104 /* WeeklyTestView.swift */,
 				DD1F4046254EDD1800F065E5 /* NSTestView.swift */,
 			);
@@ -268,7 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD20F0422550A8F500CD5C90 /* DailyHighlight.swift in Sources */,
+				DD20F0422550A8F500CD5C90 /* Highlight.swift in Sources */,
 				DD0A9ED12530F907003C3870 /* NetworkService.swift in Sources */,
 				DD5586E2254FFAC7002870C4 /* DateView.swift in Sources */,
 				DDE97B0C253CDE2000ACCC31 /* DayView.swift in Sources */,

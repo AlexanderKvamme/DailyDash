@@ -18,9 +18,6 @@ extension Date {
         
         let df = DateFormatter()
         df.dateStyle = .short
-        for d in days {
-            print("bam made day: ", df.string(from: d))
-        }
         return days
     }
 }

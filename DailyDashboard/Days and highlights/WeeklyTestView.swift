@@ -4,9 +4,9 @@ import Introspect
 
 class DayViewModel: ObservableObject {
 
-    @Published var highlights: [DailyHighlight] {
+    @Published var highlights: [Highlight] {
         didSet {
-            StorageService.putHighlightArray(arr: highlights, for: day)
+            StorageService.putHighlightArray(arr: highlights)
         }
     }
     @Published var day: Day {
@@ -17,11 +17,10 @@ class DayViewModel: ObservableObject {
     
     init(_ day: Day) {
         self.day = day
-//        StorageService.wipe()
         self.highlights = StorageService.getHighlightArray(forDay: day)
     }
     
-    convenience init(_ day: Day, highlights: [DailyHighlight]) {
+    convenience init(_ day: Day, highlights: [Highlight]) {
         self.init(day)
         self.highlights = highlights
     }
@@ -29,7 +28,7 @@ class DayViewModel: ObservableObject {
     // MARK: - Methods
     
     func deleteHighlight(_ offset: IndexSet) {
-        print("bam would try to delete offset: ", offset)
+        print("TODO would try to delete offset: ", offset)
     }
 }
 
