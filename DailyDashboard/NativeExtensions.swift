@@ -7,6 +7,7 @@
 //
 
 import AppKit
+import SwiftUI
 
 extension NSTableView {
   open override func viewDidMoveToWindow() {
@@ -15,4 +16,11 @@ extension NSTableView {
     backgroundColor = NSColor.clear
     enclosingScrollView!.drawsBackground = false
   }
+}
+
+extension View {
+    func Print(_ vars: Any...) -> some View {
+        for v in vars { print(v) }
+        return EmptyView()
+    }
 }
