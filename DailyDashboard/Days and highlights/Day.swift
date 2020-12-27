@@ -36,7 +36,6 @@ struct Day: Identifiable, Codable, PersistableRecord, FetchableRecord {
     
     static func from(key: String) -> Day? {
         let split = key.split(separator: "-")
-        
         guard let d = Int(split[2]),
               let m = Int(split[3]),
               let y = Int(split[4]) else { return nil }
@@ -51,6 +50,10 @@ struct Day: Identifiable, Codable, PersistableRecord, FetchableRecord {
         dateFormatter.dateFormat = "EEEE"
         let dayInWeek = dateFormatter.string(from: date)
         return dayInWeek
+    }
+    
+    static func daysOfWeek() -> [Day] {
+        Date.getCurrentWeek().map({$0.toDay()})
     }
 }
 

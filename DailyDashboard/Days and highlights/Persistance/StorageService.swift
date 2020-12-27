@@ -1,6 +1,7 @@
 import GRDB
 import Foundation
 import AppKit
+import Combine
 
 fileprivate let idColumn = Column("id")
 fileprivate let taskColumn = Column("task")
@@ -47,7 +48,9 @@ final class StorageService {
     static func putHighlightArray(arr: [Highlight]) {
         do {
             try dbQueue?.write { db in
-               try arr.forEach { try $0.insert(db) }
+                try arr.forEach {
+                    if try !$0.exists(db) { try $0.insert(db) }
+                }
             }
         } catch {
             print(error)
@@ -100,11 +103,25 @@ final class StorageService {
     static func delete(highlight: Highlight) {
         do {
             try dbQueue?.write({ (db) in
+                // FIXME: Hvorfor blir ikke observeren trigget når jeg sletter en highlight så her
                 try highlight.delete(db)
             })
         } catch {
             print("Error:")
         }
+    }
+    
+    // MARK: - Publishers
+    
+    static func highlightsForDayPublisher(day: Day) -> AnyPublisher<[Highlight], Error> {
+        let highlightsForDayRequest = Highlight
+            .all()
+            .filter(dayKeyColumn == day.key)
+            .fetchAll
+        return ValueObservation
+            .tracking(highlightsForDayRequest)
+            .publisher(in: StorageService.dbQueue!)
+            .eraseToAnyPublisher()
     }
     
     static func makeKey(for date: Date) -> String {

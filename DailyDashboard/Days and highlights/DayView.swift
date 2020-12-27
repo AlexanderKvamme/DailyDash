@@ -25,16 +25,19 @@ struct DayView: View {
                 .padding(EdgeInsets(top: 40, leading: 0, bottom: 0, trailing: 0))
             Spacer()
             // List of highlightViews
-            List($viewModel.highlights.wrappedValue) { highlight in
-                ZStack {
-                    HighlightView(highlight: highlight)
+            // TODO: This wierd if statement should not be needed
+            if ($viewModel.highlights.wrappedValue.count > 0) {
+                List($viewModel.highlights.wrappedValue) { highlight in
+                    ZStack {
+                        HighlightView(highlight: highlight)
+                    }
+                    .frame(width: DayView.size.width-32, height: 40, alignment: .center)
+                    .padding(0)
+                    .background(Color.clear)
                 }
-                .frame(width: DayView.size.width-32, height: 40, alignment: .center)
                 .padding(0)
-                .background(Color.clear)
+                .listStyle(SidebarListStyle())
             }
-            .padding(0)
-            .listStyle(SidebarListStyle())
             // Highlight input
             ZStack {
                 RoundedRectangle(cornerRadius: 10)
@@ -52,7 +55,7 @@ struct DayView: View {
                 // Show textfield over button of isInput
                 if isInputtingHighlight {
                     TextField("Input", text: $text, onCommit:  {
-                        $viewModel.highlights.wrappedValue.append(Highlight(task: text, day: viewModel.day))
+                        StorageService.putHighlightArray(arr: [Highlight(task: text, day: viewModel.day)])
                         isInputtingHighlight = false
                         text = ""
                     })
@@ -64,7 +67,7 @@ struct DayView: View {
                 } else {
                     // Make invis
                     TextField("Input", text: $text, onCommit: {
-                        $viewModel.highlights.wrappedValue.append(Highlight(task: text, day: viewModel.day))
+                        StorageService.putHighlightArray(arr: [Highlight(task: text, day: viewModel.day)])
                         isInputtingHighlight = false
                     })
                     .textCase(.uppercase)
