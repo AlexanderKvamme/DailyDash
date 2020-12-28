@@ -28,6 +28,7 @@
 		DD6BCA20255DC8480049B69A /* HighlightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6BCA1F255DC8480049B69A /* HighlightView.swift */; };
 		DD9C1E3B25740D0E0009E439 /* NativeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9C1E3A25740D0E0009E439 /* NativeExtensions.swift */; };
 		DDA8D5422598DFD70017C6C7 /* DayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8D5412598DFD70017C6C7 /* DayViewModel.swift */; };
+		DDA8D54A259A1EC40017C6C7 /* SwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA8D549259A1EC40017C6C7 /* SwiftUIExtensions.swift */; };
 		DDD64CBD2558613E004FD09C /* Persistance in Resources */ = {isa = PBXBuildFile; fileRef = DDD64CBC2558613E004FD09C /* Persistance */; };
 		DDD64CC725586161004FD09C /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD64CC625586161004FD09C /* StorageService.swift */; };
 		DDD688CE2561AC7000F309CF /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = DDD688CD2561AC7000F309CF /* GRDB */; };
@@ -57,6 +58,7 @@
 		DD6BCA1F255DC8480049B69A /* HighlightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HighlightView.swift; path = DailyDashboard/HighlightView.swift; sourceTree = SOURCE_ROOT; };
 		DD9C1E3A25740D0E0009E439 /* NativeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeExtensions.swift; sourceTree = "<group>"; };
 		DDA8D5412598DFD70017C6C7 /* DayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewModel.swift; sourceTree = "<group>"; };
+		DDA8D549259A1EC40017C6C7 /* SwiftUIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIExtensions.swift; sourceTree = "<group>"; };
 		DDD64CBC2558613E004FD09C /* Persistance */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Persistance; sourceTree = "<group>"; };
 		DDD64CC625586161004FD09C /* StorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		DDE97B0B253CDE2000ACCC31 /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				DD6BCA1F255DC8480049B69A /* HighlightView.swift */,
 				DD0E0B792529E367009C83F3 /* MainScreenContentView.swift */,
 				DD9C1E3A25740D0E0009E439 /* NativeExtensions.swift */,
+				DDA8D549259A1EC40017C6C7 /* SwiftUIExtensions.swift */,
 				DDD64CC525586161004FD09C /* Persistance */,
 				DD919F572558560400C0750E /* Weather */,
 				DD1F404C254EE42A00F065E5 /* Days and highlights */,
@@ -278,6 +281,7 @@
 				DD68379225317F10004EE805 /* LocationService.swift in Sources */,
 				DD2BD92C254EB7AF00025104 /* WeeklyTestView.swift in Sources */,
 				DD2C9B3F2558512B005B455D /* DateExtensions.swift in Sources */,
+				DDA8D54A259A1EC40017C6C7 /* SwiftUIExtensions.swift in Sources */,
 				DD0E0B7A2529E367009C83F3 /* MainScreenContentView.swift in Sources */,
 				DD9C1E3B25740D0E0009E439 /* NativeExtensions.swift in Sources */,
 				DD5586DF254FF6C0002870C4 /* Day.swift in Sources */,

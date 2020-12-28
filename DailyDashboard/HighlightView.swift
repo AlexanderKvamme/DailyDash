@@ -4,6 +4,7 @@ import AppKit
 struct HighlightView: View {
  
     @State private var highlight: Highlight
+    @State private var isHovering = false
     
     init(highlight: Highlight) {
         _highlight = State(initialValue: highlight)
@@ -26,6 +27,7 @@ struct HighlightView: View {
                     .buttonStyle(BorderlessButtonStyle())
                     .foregroundColor(akBlack)
                     .padding(.trailing, 8)
+                    .isVisible(isHovering)
                 }
                 Text(String(highlight.task))
                     .multilineTextAlignment(.center)
@@ -33,6 +35,8 @@ struct HighlightView: View {
                     .font(.custom(futuraBold, size: 16))
             }
             .frame(width: DayView.size.width-32, height: 40, alignment: .center)
+        } .onHover { isHovering in
+            self.isHovering = isHovering
         }
     }
 }
