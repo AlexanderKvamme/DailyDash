@@ -23,7 +23,7 @@ struct WeeklyTestView: View {
                 }
               }
             .frame(height: 100)
-        }.frame(width: 2000, height: 300, alignment: .center)
+        }.frame(width: 2000, height: DayView.size.height + 24, alignment: .center)
         .cornerRadius(20)
     }
 }

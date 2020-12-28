@@ -1,10 +1,21 @@
 import SwiftUI
 import AppKit
 
+extension NSTextField {
+    open override var focusRingType: NSFocusRingType {
+        get { .none }
+        set { }
+    }
+}
+
+
+
+
 
 struct DayView: View {
 
-    static let size = NSSize(width: 240, height: 300)
+    static let size = NSSize(width: 240, height: 340)
+    static let MAX_HIGHLIGHTS = 3
     
     @ObservedObject var viewModel: DayViewModel
     @State var text = ""
@@ -38,42 +49,34 @@ struct DayView: View {
                 .padding(0)
                 .listStyle(SidebarListStyle())
             }
-            // Highlight input
+            // Highlight input "button"
             ZStack {
-                RoundedRectangle(cornerRadius: 10)
-                    .foregroundColor(akBeige)
-                    .padding(16)
-                Button("SET A HIGHLIGHT", action: {
-                    isInputtingHighlight = true
-                })
-                    .multilineTextAlignment(.center)
-                    .foregroundColor(akBlack)
-                    .font(.custom(futuraBold, size: 16))
-                    .opacity(0.4)
-                .padding(20)
-                .buttonStyle(BorderlessButtonStyle())
-                // Show textfield over button of isInput
-                if isInputtingHighlight {
-                    TextField("Input", text: $text, onCommit:  {
-                        StorageService.putHighlightArray(arr: [Highlight(task: text, day: viewModel.day)])
+                let highlightsFull = viewModel.highlights.count >= DayView.MAX_HIGHLIGHTS
+                
+                if text.isEmpty && highlightsFull {
+                    Text("FULL")
+                        .font(.custom(futuraBold, size: 24))
+                        .foregroundColor(akBlack)
+                        .opacity(0.3)
+                } else if text.isEmpty {
+                    Text("ADD")
+                        .font(.custom(futuraBold, size: 24))
+                        .foregroundColor(akBlack)
+                }
+                
+                if !highlightsFull {
+                    TextField("", text: $text, onCommit:  {
+                        if text != "" {
+                            StorageService.putHighlightArray(arr: [Highlight(task: text, day: viewModel.day)])
+                        }
                         isInputtingHighlight = false
                         text = ""
                     })
                     .textCase(.uppercase)
                     .font(.custom(futuraBold, size: 24))
                     .multilineTextAlignment(.center)
-                    .foregroundColor(akWhite)
-                    .background(akBlack)
-                } else {
-                    // Make invis
-                    TextField("Input", text: $text, onCommit: {
-                        StorageService.putHighlightArray(arr: [Highlight(task: text, day: viewModel.day)])
-                        isInputtingHighlight = false
-                    })
-                    .textCase(.uppercase)
-                    .font(.custom(futuraBold, size: 24))
-                    .multilineTextAlignment(.center)
-                    .opacity(0.2)
+                    .textFieldStyle(PlainTextFieldStyle())
+                    .foregroundColor(akBlack)
                 }
             }.frame(width: DayView.size.width, height: 80, alignment: .center)
             .padding(0)
